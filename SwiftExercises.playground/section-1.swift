@@ -77,8 +77,16 @@ func favoriteDrinksArrayForCharacters(characters:Array<Dictionary<String, String
     // return an array of favorite drinks, like ["prune juice", "tea, Earl Grey, hot"]
     // WORK HERE
     
+//    var returnArr:Array<String> = []
+
+    var returnArr: [String] = []
+
+    for myArray: Dictionary<String, String> in characters
+    {
+        returnArr.append(myArray["favorite drink"]!)
+    }
     
-    return []
+    return returnArr
 }
 
 let favoriteDrinks = favoriteDrinksArrayForCharacters(characters)
@@ -99,6 +107,16 @@ let strings = ["milk", "eggs", "bread", "challah"]
 
 let expectedOutput = "milk;eggs;bread;challah"
 
+func stringJoiner(stringArr:Array<String>) -> String {
+    var returnString = ""
+    
+    for counterString: String in stringArr {
+        returnString += counterString + ";"
+    }
+    return returnString
+    
+}
+
 /*
 
 Closures
@@ -109,3 +127,19 @@ let cerealArray = ["Golden Grahams", "Cheerios", "Trix", "Cap'n Crunch OOPS! All
 
 // Use a closure to sort this array alphabetically
 // WORK HERE
+
+// I looked at stackoverflow which directed me to the sorted
+// method in the Swift Standard lib
+let sortedArray = cerealArray.sorted { $0 < $1 }
+
+sortedArray
+
+// I experimented a bit and found that this worked as well
+
+let sortedArray2 = sorted(cerealArray, <)
+//and 
+let sortedArray3 = sorted(cerealArray) //I'm assuming < is the default here
+
+
+
+
